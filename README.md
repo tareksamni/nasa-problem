@@ -1,4 +1,4 @@
-# Nasa Problem Interview
+# NASA coding problem
 This application is expecting the input to be a file named input.txt in the root dir of the project.
 
 ## Setup
