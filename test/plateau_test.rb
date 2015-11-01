@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require_relative '../lib/plateau'
 require_relative '../lib/robot'
 
-class PlateauTest < MiniTest::Unit::TestCase
+class PlateauTest < Minitest::Test
   attr_reader :x, :y, :plateau
   def setup
     @x = 5

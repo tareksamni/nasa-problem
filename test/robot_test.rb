@@ -3,7 +3,7 @@ require_relative '../lib/robot'
 require_relative '../lib/coordinate'
 require_relative 'test_helper'
 
-class RobotTest < MiniTest::Unit::TestCase
+class RobotTest < Minitest::Test
   attr_reader :x, :y, :robot
   
   def setup
