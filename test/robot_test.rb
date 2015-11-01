@@ -7,13 +7,19 @@ class RobotTest < MiniTest::Unit::TestCase
   attr_reader :x, :y, :robot
   
   def setup
-    @x = 0
-    @y = 3
+    @x = 1
+    @y = 2
     @robot = Robot.new(Coordinate.new(@x, @y), 'N')
   end
 
   def test_a_robot
     assert_instance_of Robot, robot
+  end
+
+  def test_a_bad_robot
+    assert_raises ArgumentError do 
+      Robot.new(Coordinate.new(@x, @y), 'Z')
+    end
   end
 
   def test_a_robot_initialize
@@ -86,5 +92,18 @@ class RobotTest < MiniTest::Unit::TestCase
     robot.move_forward
     assert_equal robot.coordinate.x, (x - 1)
     assert_equal robot.coordinate.y, y
+  end
+
+  def test_good_start
+    robot.start(['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M'])
+    assert_equal robot.coordinate.x, 1
+    assert_equal robot.coordinate.y, 3
+    assert_equal robot.heading, 'N'
+  end
+
+  def test_bad_start
+    assert_raises ArgumentError do 
+      robot.start(['L', 'M', 'F', 'M', 'L', 'M', 'L', 'M', 'M'])
+    end
   end
 end
