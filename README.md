@@ -1,5 +1,5 @@
 # Nasa Problem Interview
-This application is expecting the input to be a failt named input.txt in the root dir of the project.
+This application is expecting the input to be a file named input.txt in the root dir of the project.
 
 ## Setup
 ```
