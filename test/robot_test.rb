@@ -5,7 +5,7 @@ require_relative 'test_helper'
 
 class RobotTest < Minitest::Test
   attr_reader :x, :y, :robot
-  
+
   def setup
     @x = 1
     @y = 2
@@ -17,7 +17,7 @@ class RobotTest < Minitest::Test
   end
 
   def test_a_bad_robot
-    assert_raises ArgumentError do 
+    assert_raises ArgumentError do
       Robot.new(Coordinate.new(@x, @y), 'Z')
     end
   end
@@ -29,11 +29,11 @@ class RobotTest < Minitest::Test
   end
 
   def test_to_s
-    s = robot.to_s.split(" ")
+    s = robot.to_s.split(' ')
     assert_equal s.size, 3
-    assert is_int(s[0])
-    assert is_int(s[1])
-    assert ['N', 'W', 'E', 'S'].include?(s[2])
+    assert int?(s[0])
+    assert int?(s[1])
+    assert %w(N W E S).include?(s[2])
   end
 
   def test_locate
@@ -95,15 +95,15 @@ class RobotTest < Minitest::Test
   end
 
   def test_good_start
-    robot.start(['L', 'M', 'L', 'M', 'L', 'M', 'L', 'M', 'M'])
+    robot.start(%w(L M L M L M L M M))
     assert_equal robot.coordinate.x, 1
     assert_equal robot.coordinate.y, 3
     assert_equal robot.heading, 'N'
   end
 
   def test_bad_start
-    assert_raises ArgumentError do 
-      robot.start(['L', 'M', 'F', 'M', 'L', 'M', 'L', 'M', 'M'])
+    assert_raises ArgumentError do
+      robot.start(%(L M F M L M L M M))
     end
   end
 end

@@ -1,13 +1,13 @@
 class Robot
-  HEADINGS = ['N', 'E', 'S', 'W']
+  HEADINGS = %w(N E S W).freeze
   INSTRUCTIONS = {
-    "R" => :spin_right,
-    "L" => :spin_left,
-    "M" => :move_forward
-  }
+    'R' => :spin_right,
+    'L' => :spin_left,
+    'M' => :move_forward
+  }.freeze
 
   attr_reader :coordinate, :heading
-  
+
   def initialize(coordinate, heading)
     raise ArgumentError, "Invalid heading: #{heading}" unless valid_heading?(heading)
     @heading = heading

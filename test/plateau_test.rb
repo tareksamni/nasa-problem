@@ -29,21 +29,21 @@ class PlateauTest < Minitest::Test
 
   def test_bad_land
     robot = Robot.new(Coordinate.new(6, 5), 'E')
-    assert_raises OutOfPlateauLand do 
+    assert_raises OutOfPlateauLand do
       plateau.land(robot)
     end
   end
 
   def test_bad_recieve
     assert_raises RobotNotLanded do
-      plateau.recieve("LMLMLMLMM")
+      plateau.recieve('LMLMLMLMM')
     end
   end
 
   def test_good_recieve
     robot = Robot.new(Coordinate.new(1, 2), 'N')
     plateau.land(robot)
-    plateau.recieve("LMLMLMLMM".chars)
+    plateau.recieve('LMLMLMLMM'.chars)
     assert_equal plateau.robot.coordinate.x, 1
     assert_equal plateau.robot.coordinate.y, 3
     assert_equal plateau.robot.heading, 'N'

@@ -1,5 +1,5 @@
-def is_int(str)
+def int?(str)
   !!Integer(str)
 rescue ArgumentError, TypeError
-    false
+  false
 end

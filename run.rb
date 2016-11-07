@@ -5,19 +5,20 @@ require_relative './lib/robot'
 if $PROGRAM_NAME == __FILE__
   plateau = nil
   robots = []
-  File.open("input.txt", "r") do |f|
+  cwd = File.dirname(__FILE__)
+  File.open("#{cwd}/input.txt", 'r') do |f|
     f.each_line do |line|
       if plateau.nil?
-        x, y = line.split(" ")
-        plateau = Plateau.new(x.to_i,y.to_i)
-      elsif line.include?(" ")
-        x, y, h = line.split(" ")
+        x, y = line.split(' ')
+        plateau = Plateau.new(x.to_i, y.to_i)
+      elsif line.include?(' ')
+        x, y, h = line.split(' ')
         c = Coordinate.new(x.to_i, y.to_i)
         r = Robot.new(c, h)
         plateau.land(r)
         robots << r
       else
-        plateau.recieve(line.chars.reject{ |e| e == "\n" })
+        plateau.recieve(line.chars.reject { |e| e == "\n" })
       end
     end
   end
