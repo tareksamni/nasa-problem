@@ -103,7 +103,7 @@ class RobotTest < Minitest::Test
 
   def test_bad_start
     assert_raises ArgumentError do
-      robot.start(%(L M F M L M L M M))
+      robot.start(%w(L M F M L M L M M))
     end
   end
 end
